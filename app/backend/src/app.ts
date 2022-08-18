@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import 'express-async-errors';
-import routers from './Routers';
+import routers from './routers';
 import httpErrorHandler from './middlewares/http.erro.middleware';
 
 class App {

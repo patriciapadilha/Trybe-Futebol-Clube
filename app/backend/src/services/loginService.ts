@@ -1,33 +1,27 @@
 import * as Joi from 'joi';
 import { compareSync } from 'bcryptjs';
 import ILoginToken from '../interfaces/ILoginToken';
-import sequelize from '../database/models';
 import HttpException from '../utils/http.exceptions';
-import IJWT from '../interfaces/IJWT';
 import TokenGenerator from '../utils/tokenGenerator';
+import User from '../database/models/User';
 
 class LoginService {
-  private tokenGenerator = new TokenGenerator();
-
-  public async authentication(login: ILoginToken) {
+  static async authentication(login: ILoginToken) {
     LoginService.validateLogin(login);
 
-    const user = await sequelize.models.User.findOne({
-      where: { email: login.email, password: login.password },
+    const user = await User.findOne({
+      where: { email: login.email },
     });
 
     if (!user) {
-      throw new HttpException(401, 'username or password is invalid');
+      throw new HttpException(401, 'Incorrect email or password');
     }
 
     if (user && compareSync(login.password, user.getDataValue('password'))) {
-      const jwtHeader: IJWT = {
-        username: user.getDataValue('username'),
-        role: user.getDataValue('role'),
-        email: user.getDataValue('email'),
-      };
-
-      const token = this.tokenGenerator.generateToken(jwtHeader);
+      const token = TokenGenerator.generateToken({
+        email: login.email,
+        password: login.password,
+      });
       return { token };
     }
   }
@@ -38,7 +32,7 @@ class LoginService {
       password: Joi.string().required(),
     });
     const { error } = schemaLogin.validate(login);
-    if (error) throw new HttpException(400, 'All fields must be filded');
+    if (error) throw new HttpException(400, 'All fields must be filled');
   }
 }
 
