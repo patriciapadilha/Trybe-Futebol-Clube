@@ -24,6 +24,7 @@ class LoginService {
       });
       return { token };
     }
+    throw new HttpException(401, 'Incorrect email or password');
   }
 
   static validateLogin(login: ILoginToken): void {
