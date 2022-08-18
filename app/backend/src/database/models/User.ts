@@ -1,13 +1,14 @@
 import { Model, INTEGER, STRING } from 'sequelize';
+import { IUser } from '../../interfaces/IUser';
 import db from '.';
 // import OtherModel from './OtherModel';
 
-class User extends Model {
-  id!: number;
-  username!: string;
-  role!: string;
-  email!: string;
-  password!: string;
+class User extends Model implements IUser {
+  id: number;
+  username: string;
+  role: string;
+  email: string;
+  password: string;
 }
 
 User.init({
@@ -33,7 +34,7 @@ User.init({
   password: {
     type: STRING(100),
     allowNull: false,
-  }
+  },
 }, {
   sequelize: db,
   modelName: 'users',
