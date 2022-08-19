@@ -6,7 +6,7 @@ import TokenGenerator from '../utils/tokenGenerator';
 import User from '../database/models/User';
 
 class LoginService {
-  static async authentication(login: ILoginToken) {
+  static async authentication(login: ILoginToken): Promise<string> {
     LoginService.validateLogin(login);
 
     const user = await User.findOne({
@@ -17,12 +17,13 @@ class LoginService {
       throw new HttpException(401, 'Incorrect email or password');
     }
 
-    if (user && compareSync(login.password, user.getDataValue('password'))) {
-      const token = TokenGenerator.generateToken({
+    if (user && compareSync(login.password as string, user.getDataValue('password'))) {
+      return TokenGenerator.generateToken({
+        id: user.getDataValue('id'),
         email: login.email,
-        password: login.password,
+        role: user.getDataValue('role'),
       });
-      return { token };
+      // return { token };
     }
     throw new HttpException(401, 'Incorrect email or password');
   }
