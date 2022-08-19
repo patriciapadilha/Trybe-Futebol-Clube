@@ -1,15 +1,15 @@
-import * as Jwt from 'jsonwebtoken';
-import { NextFunction, Request, Response } from 'express';
-import TokenGenerator from '../utils/tokenGenerator';
+// import * as Jwt from 'jsonwebtoken';
+// import { NextFunction, Request, Response } from 'express';
+// import TokenGenerator from '../utils/tokenGenerator';
 
-const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.authorization || '';
+// const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+//   const token = req.headers.authorization || '';
 
-  const payload = TokenGenerator.authenticateToken(token);
+//   const payload = TokenGenerator.authenticateToken(token);
 
-  // req.user = payload;
+//   // req.user = payload;
 
-  next();
-};
+//   next();
+// };
 
-export default authMiddleware;
+// export default authMiddleware;

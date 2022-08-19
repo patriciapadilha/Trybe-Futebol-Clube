@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import TokenGenerator from '../utils/tokenGenerator';
 import LoginService from '../services/loginService';
-import { JwtPayload } from 'jsonwebtoken';
 import ILoginToken from '../interfaces/ILoginToken';
 
 class LoginController {
