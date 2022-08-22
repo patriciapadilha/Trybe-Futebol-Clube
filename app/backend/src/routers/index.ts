@@ -5,8 +5,8 @@ import matches from './matches.routes';
 
 const router = Router();
 
+router.use(matches);
 router.use(login);
 router.use(teams);
-router.use(matches);
 
 export default router;
