@@ -23,7 +23,7 @@ class MatchController {
   static async updateFinish(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      await MatchService.updateMatch(id, { inProgress: false });
+      await MatchService.updateFinish(id);
       res.status(200).json({ message: 'Finished' });
     } catch (e) {
       next(e);

@@ -27,8 +27,12 @@ class MatchService {
     return match;
   }
 
-  static async updateMatch(id: string, matchInfos: IMatch) {
-    await Match.update(matchInfos, { where: { id } });
+  static async updateFinish(id: string) {
+    await Match.update({ inProgress: false }, { where: { id } });
+  }
+
+  static async updateMatch(id: string, matchinfos: IMatch) {
+    await Match.update({ ...matchinfos }, { where: { id } });
   }
 }
 
