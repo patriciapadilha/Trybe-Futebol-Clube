@@ -1,4 +1,3 @@
-import { error } from 'console';
 import { NextFunction, Request, Response } from 'express';
 import MatchService from '../services/matchService';
 
@@ -7,8 +6,8 @@ class MatchController {
     try {
       const teams = await MatchService.getAllMatches();
       res.status(200).json(teams);
-    } catch (err) {
-      next(err);
+    } catch (e) {
+      next(e);
     }
   }
 
@@ -16,8 +15,8 @@ class MatchController {
     try {
       const newMatch = await MatchService.createMatch(req.body);
       res.status(201).json(newMatch);
-    } catch (err) {
-      next(error);
+    } catch (e) {
+      next(e);
     }
   }
 
@@ -26,8 +25,8 @@ class MatchController {
       const { id } = req.params;
       await MatchService.updateMatch(id, { inProgress: false });
       res.status(200).json({ message: 'Finished' });
-    } catch (err) {
-      next(err);
+    } catch (e) {
+      next(e);
     }
   }
 
@@ -36,8 +35,8 @@ class MatchController {
       const { id } = req.params;
       await MatchService.updateMatch(id, req.body);
       res.status(200).json({ message: 'Updated' });
-    } catch (err) {
-      next(err);
+    } catch (e) {
+      next(e);
     }
   }
 }

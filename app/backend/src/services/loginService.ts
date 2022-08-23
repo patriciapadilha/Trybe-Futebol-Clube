@@ -23,7 +23,6 @@ class LoginService {
         email: login.email,
         role: user.getDataValue('role'),
       });
-      // return { token };
     }
     throw new HttpException(401, 'Incorrect email or password');
   }

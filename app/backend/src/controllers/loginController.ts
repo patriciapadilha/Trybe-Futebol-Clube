@@ -8,8 +8,8 @@ class LoginController {
     try {
       const token = await LoginService.authentication(req.body);
       res.status(200).json({ token });
-    } catch (err) {
-      next(err);
+    } catch (e) {
+      next(e);
     }
   }
 
@@ -18,8 +18,8 @@ class LoginController {
       const token = req.headers.authorization;
       const payload = TokenGenerator.authenticateToken(token as string) as ILoginToken;
       res.status(200).json({ role: payload.role });
-    } catch (err) {
-      next(err);
+    } catch (e) {
+      next(e);
     }
   }
 }

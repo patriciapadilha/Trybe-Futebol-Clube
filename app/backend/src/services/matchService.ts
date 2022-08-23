@@ -20,12 +20,8 @@ class MatchService {
       throw new HttpException(401, 'It is not possible to create a match with two equal teams');
     }
 
-    const homeTeam = TeamService.getTeamById(matchInfos.homeTeam);
-    const awayTeam = TeamService.getTeamById(matchInfos.awayTeam);
-
-    if (!homeTeam || !awayTeam) {
-      throw new HttpException(404, 'There is no team with such id!');
-    }
+    await TeamService.getTeamById(matchInfos.homeTeam);
+    await TeamService.getTeamById(matchInfos.awayTeam);
 
     const match = await Match.create({ ...matchInfos, inProgress: true });
     return match;

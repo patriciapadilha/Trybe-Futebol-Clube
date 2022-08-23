@@ -11,7 +11,7 @@ class TeamService {
   static async getTeamById(id: string | number | undefined): Promise<ITeam> {
     const team = await Team.findByPk(id);
     if (!team) {
-      throw new HttpException(404, 'Team not found');
+      throw new HttpException(404, 'There is no team with such id!');
     }
     return team;
   }
