@@ -7,14 +7,14 @@ export default class LeaderboardController {
       const pathHome = req.path.includes('home');
       const pathAway = req.path.includes('away');
       if (pathHome) {
-        const result = await LeaderboardService.buildLeaderboard('home');
+        const result = await LeaderboardService.getLeaderboard('home');
         return res.status(200).json(result);
       }
       if (pathAway) {
-        const result = await LeaderboardService.buildLeaderboard('away');
+        const result = await LeaderboardService.getLeaderboard('away');
         return res.status(200).json(result);
       }
-      const result = await LeaderboardService.buildLeaderboard('homeAndAway');
+      const result = await LeaderboardService.getLeaderboard('homeAndAway');
       return res.status(200).json(result);
     } catch (e) {
       next(e);

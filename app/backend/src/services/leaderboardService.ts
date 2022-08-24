@@ -18,7 +18,7 @@ export default class LeaderboardService {
     return result;
   }
 
-  static async findAllInProgressOrFinished(inProgress: number) {
+  static async findAllInProgress(inProgress: number) {
     const matches = await Match.findAll({
       include: [
         { model: Team, as: 'teamHome', attributes: ['teamName'] },
@@ -31,10 +31,10 @@ export default class LeaderboardService {
     return matches;
   }
 
-  static async buildLeaderboard(path: string): Promise<ILeaderboard[]> {
-    const allMatches = await LeaderboardService.findAllInProgressOrFinished(0);
-    const allClubs = await TeamService.getAllTeams();
-    const leaderboard = allClubs.map((team) => ({
+  static async getLeaderboard(path: string): Promise<ILeaderboard[]> {
+    const allMatches = await LeaderboardService.findAllInProgress(0);
+    const teams = await TeamService.getAllTeams();
+    const leaderboard = teams.map((team) => ({
       name: team.teamName,
       totalPoints: GamePoints.totalPoints(team.id as number, allMatches, path),
       totalGames: GamePoints.totalGames(team.id as number, allMatches, path),
