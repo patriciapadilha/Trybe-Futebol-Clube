@@ -2,16 +2,13 @@
 ### Projeto realizado durante o módulo de back-end na Trybe 💚
 
 ## Tecnologias utilizadas:
-<div>
-  <img width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt='icone do Node.js'>
-  <p>Node.js</p>
-  <img width="60px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt='icone do MySQL'>
-  <p>MySQL</p>
-  <img width="30px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" alt='icone do Sequelize'>
-  <p>Sequelize</p>
-  <img width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt='icone do Typescript'>
-  <p>Typescript</p>
-</div>
+
+<img align="center" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt='icone do Node.js'>
+<img align="center" width="70px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt='icone do MySQL'>
+<img align="center" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" alt='icone do Sequelize'>
+<img align="center" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt='icone do Typescript'>
+<img align="center" alt="Jest" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg">
+
 
 ---
 ## Paradigma de programação:
